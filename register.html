@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Register Page{% endblock %}
+{% block content %}
+  <h2><b>Register form</b></h2>
+    <form action="/register" method="POST" novalidate>
+      {{form.hidden_tag()}}
+      {% if form.errors %}
+        <ul>
+          {% for error in form.errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <div class="form-group">
+        {{form.firstname.label(for="firstname")}}
+        {{form.firstname(id="firstname", class="form-control needs-validation")}} 
+        {% if form.firstname.errors %}
+          <ul>
+            {% for error in form.firstname.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.lastname.label(for="lastname")}}
+        {{form.lastname(id="lastname", class="form-control needs-validation")}} 
+        {% if form.lastname.errors %}
+          <ul>
+            {% for error in form.lastname.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.dob.label(for="dob")}}
+        {{form.dob(id="dob", class="form-control needs-validation")}}
+        {% if form.dob.errors %}
+          <ul>
+            {% for error in form.dob.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.email.label(for="email")}}
+        {{form.email(id="email", class="form-control needs-validation")}} 
+        {% if form.email.errors %}
+          <ul>
+            {% for error in form.email.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.phone.label(for="phone")}}
+        {{form.phone(id="phone", class="form-control needs-validation")}} 
+        {% if form.phone.errors %}
+          <ul>
+            {% for error in form.phone.errors %}
+            <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.username.label(for="username")}}
+        {{form.username(id="username", class="form-control needs-validation")}}
+        {% if form.username.errors %}
+          <ul class="text-danger">
+            {% for error in form.username.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.password.label(for="password")}}
+        {{form.password(id="password", class="form-control needs-validation")}}
+        {% if form.password.errors %}
+          <ul>
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      {{form.submit(class="btn btn-dark mt-4 btn-primary ")}}
+      or  <a href="/login" class="btn btn-danger mt-4">Login</a> 
+      <!-- <div class="mt-4">
+        or  <a href="/login" class="btn btn-danger mt-4">Login</a> 
+      </div> -->
+    </form>
+{% endblock %}
