@@ -1,0 +1,41 @@
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/validation.js') }}"></script> 
+    </head>
+
+    <body>
+        <div class="container">
+            {% if 'id' in session %}
+            <nav class="navbar navbar-expand-lg navbar-light saas--nav" style="background-color: #e3f2fd;">
+                <a class="navbar-brand" href="#">Saas App</a>
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav mr-auto saas-nav">
+                        <li class="nav-item active">
+                        <a class="nav-link" href="{{url_for('dashboard')}}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('leads')}}">Leads</a>
+                        </li>        
+                    </ul>      
+                </div>
+                <div style="position: absolute; top:10px; right: 20px; text-align: right;">
+                    <div style="font-weight: bold;">
+                        {% if u %}
+                        {{u[0]}} {{u[1]}}
+                        {% endif %}
+                    </div>
+                    <a href="/logout" class="btn btn-primary mt-3">Logout</a>
+                </div>
+            </nav>  
+            {% endif %}
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>
