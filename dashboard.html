@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2><b>Welcome to the Dashboard</b></h2>
+  {% if u %}
+    <h4><b>User information</b></h4>
+    <ul>
+      <li class="info">Name : {{u[0]}} {{u[1]}}</li>
+      <li class="info">Username : {{u[2]}}</li>
+      <li class="info">Email : {{u[3]}}</li>
+    </ul>
+  {% endif %}
+{% endblock %}
